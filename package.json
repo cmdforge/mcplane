@@ -17,6 +17,7 @@
   "scripts": {
     "dev": "tsx src/cli.ts",
     "build": "tsc",
+    "prepare": "npm run build",
     "test": "node --test --import tsx src/**/*.test.ts",
     "generate:registry-types": "openapi-typescript https://registry.modelcontextprotocol.io/openapi.json -o src/registry-api.types.ts"
   },
