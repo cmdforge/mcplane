@@ -1,0 +1,32 @@
+{
+  "name": "@cmdforge/mcplane",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Translate the tools of any MCP server into a dynamic CLI. Allows executing tools as one-shot commands, or establishing interactive sessions with the given MCP server.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmdforge/mcplane.git"
+  },
+  "bin": {
+    "mcplane": "./dist/cli.js"
+  },
+  "allowScripts": {
+    "esbuild": true,
+    "fsevents": true
+  },
+  "scripts": {
+    "dev": "tsx src/cli.ts",
+    "build": "tsc",
+    "test": "node --test --import tsx src/**/*.test.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "commander": "15.0.0",
+    "string-argv": "^0.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "25.9.3",
+    "typescript": "^5.8.0",
+    "tsx": "4.22.4"
+  }
+}
