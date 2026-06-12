@@ -17,7 +17,8 @@
   "scripts": {
     "dev": "tsx src/cli.ts",
     "build": "tsc",
-    "test": "node --test --import tsx src/**/*.test.ts"
+    "test": "node --test --import tsx src/**/*.test.ts",
+    "generate:registry-types": "openapi-typescript https://registry.modelcontextprotocol.io/openapi.json -o src/registry-api.types.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.29.0",
@@ -26,7 +27,8 @@
   },
   "devDependencies": {
     "@types/node": "25.9.3",
-    "typescript": "^5.8.0",
-    "tsx": "4.22.4"
+    "openapi-typescript": "^7.13.0",
+    "tsx": "4.22.4",
+    "typescript": "^5.8.0"
   }
 }

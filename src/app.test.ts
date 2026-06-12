@@ -7,7 +7,7 @@ import { AppServices, AppSession, CommandRegistry, resolveMcpServer } from "./ap
 
 async function withTempConfig(run: (configFile: string) => Promise<void>) {
   const dir = await mkdtemp(join(tmpdir(), "mcplane-test-"));
-  const configFile = join(dir, ".mcplane.json");
+  const configFile = join(dir, ".mcplane", "config.json");
 
   try {
     await run(configFile);
@@ -48,6 +48,7 @@ test("resolves a raw stdio server definition", async () => {
       transport: "stdio",
       command: "node",
       args: ["-e", "console.log(1)"],
+      origin: { kind: "raw" },
     },
   });
 });
@@ -82,6 +83,7 @@ test("loads a saved server and ignores legacy saved force", async () => {
         transport: "stdio",
         command: "node",
         args: ["-e", "console.log(1)"],
+        origin: { kind: "raw" },
       },
     });
   });
@@ -139,6 +141,7 @@ test("AppServices saves, loads, and lists named servers", async () => {
       transport: "stdio",
       command: "node",
       args: ["zebra.js"],
+      origin: { kind: "raw" },
     });
   });
 });
@@ -158,6 +161,7 @@ test("server save command writes config and prints saved info", async () => {
       transport: "stdio",
       command: "node",
       args: ["server.js"],
+      origin: { kind: "raw" },
     });
 
     const contents = await readFile(configFile, "utf8");
@@ -181,6 +185,7 @@ test("server load command prints saved info", async () => {
       transport: "stdio",
       command: "node",
       args: ["server.js"],
+      origin: { kind: "raw" },
     });
   });
 });

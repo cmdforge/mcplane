@@ -100,7 +100,7 @@ This prompting is session-local only and is not persisted to disk.
 
 ## Server commands
 
-Saved servers live in `.mcplane.json` in the current working directory.
+Saved servers live in `.mcplane/config.json` in the current working directory.
 
 Current commands:
 
@@ -161,7 +161,7 @@ Semantics:
 
 Semantics:
 
-- saves the resolved server definition in `.mcplane.json`
+- saves the resolved server definition in `.mcplane/config.json`
 - the saved value is the serialized `McpServerInfo`
 - saving an existing name fails by default
 - `-f --save <name>` overwrites an existing entry
@@ -177,7 +177,7 @@ Right now it is used for two related behaviors:
 
 ## Config file
 
-Saved servers live in `.mcplane.json` in the current working directory.
+Saved servers live in `.mcplane/config.json` in the current working directory.
 
 Example shape:
 

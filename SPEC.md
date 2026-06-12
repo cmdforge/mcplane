@@ -64,7 +64,7 @@ Implemented transport(s):
 Implemented notable behavior:
 
 - single-target session reuse with force reconnect support
-- saved server config in `.mcplane.json`
+- saved server config in `.mcplane/config.json`
 - local tool cache populated immediately after connect
 - tool list changed listener when the server advertises it
 - generated Commander tree for `tool exec`
@@ -128,21 +128,15 @@ Current intended model:
 
 ## Current types
 
-### `McpInfo`
+### `McpServerInfo`
 
-Shape:
+Current shape:
 
-- `transport: string`
+- `transport: "stdio"`
 - `command: string`
 - `args: string[]`
 
-This is the base server launch information used to build a client transport.
-
-### `McpServerInfo`
-
-Currently an alias of `McpInfo`.
-
-This is the persisted normalized server definition. It is what gets serialized into config and should not contain transient flags like `force`.
+This is the persisted normalized server definition and the current runtime connection shape. It is what gets serialized into config and should not contain transient flags like `force`.
 
 ### `McpServerResolution`
 
@@ -160,7 +154,7 @@ This represents:
 
 Current config file:
 
-- `.mcplane.json`
+- `.mcplane/config.json`
 
 Reason for the custom name:
 
@@ -224,7 +218,7 @@ The convenience flag resolves through the same functionality exposed by `server 
 
 Semantics:
 
-- `--save <name>` stores the resolved `McpServerInfo` in `.mcplane.json`
+- `--save <name>` stores the resolved `McpServerInfo` in `.mcplane/config.json`
 - saved value is literally the serialized `McpServerInfo`
 - without `-f`, saving over an existing name fails
 - with `-f`, overwrite is allowed
@@ -267,7 +261,7 @@ Class:
 
 Responsibilities:
 
-- hold current `info?: McpInfo`
+- hold current `info?: McpServerInfo`
 - hold current `client?: Client`
 - connect new clients
 - reuse current connection when appropriate
