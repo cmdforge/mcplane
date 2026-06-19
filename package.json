@@ -1,6 +1,7 @@
 {
   "name": "@cmdforge/mcplane",
   "version": "0.0.0",
+  "license": "MIT",
   "type": "module",
   "description": "Translate the tools of any MCP server into a dynamic CLI. Allows executing tools as one-shot commands, or establishing interactive sessions with the given MCP server.",
   "repository": {
